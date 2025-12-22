@@ -49,13 +49,13 @@ void buscar_vehiculos_por_precio(Inventario *inv, float precio_min, float precio
         if (inv->vehiculos[i].estado[0] == 'D' && 
             inv->vehiculos[i].precio >= precio_min && 
             inv->vehiculos[i].precio <= precio_max) {
-            printf("ID: %d | %s %s (%d) | $%.2f | %s km | Color: %s\n",
+            printf("ID: %d | %s %s (%d) | $%.2f | %.0f km | Color: %s\n",
                    inv->vehiculos[i].id,
                    inv->vehiculos[i].marca,
                    inv->vehiculos[i].modelo,
                    inv->vehiculos[i].anio,
                    inv->vehiculos[i].precio,
-                   (int)inv->vehiculos[i].kilometraje,
+                   inv->vehiculos[i].kilometraje,
                    inv->vehiculos[i].color);
             encontrados++;
         }
@@ -76,13 +76,13 @@ void buscar_vehiculos_por_marca(Inventario *inv, char marca[]) {
     for (int i = 0; i < inv->cantidad_vehiculos; i++) {
         if (strcmp(inv->vehiculos[i].marca, marca) == 0 && 
             inv->vehiculos[i].estado[0] == 'D') {
-            printf("ID: %d | %s (%d) | $%.2f | %s | %d km\n",
+            printf("ID: %d | %s (%d) | $%.2f | %s | %.0f km\n",
                    inv->vehiculos[i].id,
                    inv->vehiculos[i].modelo,
                    inv->vehiculos[i].anio,
                    inv->vehiculos[i].precio,
                    inv->vehiculos[i].tipo,
-                   (int)inv->vehiculos[i].kilometraje);
+                   inv->vehiculos[i].kilometraje);
             encontrados++;
         }
     }
@@ -425,8 +425,8 @@ void buscar_vehiculos_para_cliente(Inventario *inv, Cliente *cliente,
             v->precio <= cliente->presupuesto &&
             strcmp(v->marca, marca_preferida) == 0 &&
             strcmp(v->tipo, tipo) == 0) {
-            printf("ID: %d | %s %s (%d) | $%.2f | %d km\n",
-                   v->id, v->marca, v->modelo, v->anio, v->precio, (int)v->kilometraje);
+            printf("ID: %d | %s %s (%d) | $%.2f | %.0f km\n",
+                   v->id, v->marca, v->modelo, v->anio, v->precio, v->kilometraje);
             encontrados++;
         }
     }
