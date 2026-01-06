@@ -159,3 +159,9 @@ int validar_email(char email[]);
 int validar_telefono(char telefono[]);
 
 #endif
+
+
+//gcc ".\main.c" ".\funciones.c" -o ".\taller.exe"
+//.\taller.exe
+
+
